@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     public AudioClip pickup;
     private AudioSource audiosource;
     public AudioClip youWin;
-
+    public AudioClip youLose;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
@@ -64,6 +64,7 @@ public class PlayerController : MonoBehaviour
             Destroy(gameObject);
             WinTextObject.gameObject.SetActive(true);
             WinTextObject.GetComponent<TextMeshProUGUI>().text = "You Lose!";
+            audiosource.PlayOneShot(youLose);
 
         }
 
