@@ -18,7 +18,8 @@ public class PlayerController : MonoBehaviour
 
     public AudioClip pickup;
     private AudioSource audiosource;
-    
+    public AudioClip youWin;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
@@ -48,6 +49,7 @@ public class PlayerController : MonoBehaviour
             WinTextObject.SetActive(true);
 
             Destroy(GameObject.FindGameObjectWithTag("Enemy"));
+            audiosource.PlayOneShot(youWin);
         }
     }
     void FixedUpdate()
