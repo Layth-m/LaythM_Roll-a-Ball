@@ -14,13 +14,17 @@ public class PlayerController : MonoBehaviour
     private float movementX;
     private float movementY;
 
-    private int count; 
+    private int count;
 
+    public AudioClip pickup;
+    private AudioSource audiosource;
+    
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     void Start()
     {
+        audiosource = GetComponent<AudioSource>();
         count = 0;
         rb = GetComponent<Rigidbody>();
         SetCountText();
@@ -70,6 +74,7 @@ public class PlayerController : MonoBehaviour
             other.gameObject.SetActive(false);
             count++;
             SetCountText() ;
+            audiosource.PlayOneShot(pickup);
         }
         
 
