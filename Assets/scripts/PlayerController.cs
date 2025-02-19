@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     private AudioSource audiosource;
     public AudioClip youWin;
     public AudioClip youLose;
-
+    public AudioClip wallimpact;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     void Start()
@@ -59,6 +59,10 @@ public class PlayerController : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            audiosource.PlayOneShot(wallimpact);
+        }
         if (collision.gameObject.CompareTag("Enemy"))
         {
             Destroy(gameObject);
@@ -70,6 +74,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
+  
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("PickUp"))
