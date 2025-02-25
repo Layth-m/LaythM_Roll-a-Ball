@@ -24,6 +24,8 @@ public class PlayerController : MonoBehaviour
 
 
     public GameObject VFX_BURST;
+
+    public GameObject VFX_Explode;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     void Start()
@@ -65,10 +67,12 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Wall"))
         {
             audiosource.PlayOneShot(wallimpact);
+
         }
         if (collision.gameObject.CompareTag("Enemy"))
         {
             Destroy(gameObject);
+            Instantiate(VFX_Explode, transform.position, Quaternion.identity);
             WinTextObject.gameObject.SetActive(true);
             WinTextObject.GetComponent<TextMeshProUGUI>().text = "You Lose!";
             audiosource.PlayOneShot(youLose);
