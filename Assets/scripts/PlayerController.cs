@@ -21,6 +21,9 @@ public class PlayerController : MonoBehaviour
     public AudioClip youWin;
     public AudioClip youLose;
     public AudioClip wallimpact;
+
+
+    public GameObject VFX_BURST;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     void Start()
@@ -81,6 +84,7 @@ public class PlayerController : MonoBehaviour
         {
             other.gameObject.SetActive(false);
             count++;
+            Instantiate(VFX_BURST,transform.position, Quaternion.identity);
             SetCountText() ;
             audiosource.PlayOneShot(pickup);
         }
