@@ -71,11 +71,15 @@ public class PlayerController : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            Destroy(gameObject);
+           
             Instantiate(VFX_Explode, transform.position, Quaternion.identity);
+            Destroy(gameObject);
             WinTextObject.gameObject.SetActive(true);
             WinTextObject.GetComponent<TextMeshProUGUI>().text = "You Lose!";
             audiosource.PlayOneShot(youLose);
+
+            // Set the speed of the enemy's animation to 0
+            collision.gameObject.GetComponentInChildren<Animator>().SetFloat("speed_f", 0);
 
         }
 
